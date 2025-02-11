@@ -1,0 +1,105 @@
+name: tanager_workspace
+
+packages:
+  - app
+  - packages/**
+
+ignore:
+  - packages/**/example
+
+scripts:
+  analyze:flutter:
+    run: melos exec -c 1 -- flutter analyze
+    description: Analyze (All Packages)
+
+  format:dart:
+    run: melos exec -c 1 -- dart format .
+    description: Formatting (All Packages)
+
+  get:flutter:
+    run: melos exec -c 1 -- flutter pub get
+    description: Get packages (All Packages)
+
+  get:packages:
+    exec: flutter pub get
+    description: Get packages (Select Packages)
+    packageFilters:
+      dirExists:
+        - test
+
+  get:pub_outdated:
+    run: melos exec -c 1 -- dart pub outdated
+    description: Get Flutter pub outdated
+
+  generate:app_icons:
+    run: bash scripts/build-flutter-launcher-icons.sh
+    description: Build generated App Icons iOS & Android
+
+  generate:splash:
+    run: bash scripts/build-flutter-native-splash.sh
+    description: Build generated Native Splash iOS & Android
+
+  generate:flutter:
+    run: melos exec -c 1 --depends-on="build_runner" --flutter -- "flutter pub run build_runner build --delete-conflicting-outputs"
+    description: Build all generated files (All Packages)
+
+  generate:packages:
+    exec: flutter pub run build_runner build --delete-conflicting-outputs
+    description: Build all generated files (Select Packages)
+    packageFilters:
+      dependsOn:
+        - build_runner
+
+  build:android:appbundle:
+    run: bash scripts/build-deploy.sh aos appbundle
+    description: Build Deploy Android (AppBundle) - Only Android
+
+  build:android:production:
+    run: bash scripts/build-deploy.sh aos production
+    description: Build Deploy Android (Production)
+
+  build:ios:production:
+    run: bash scripts/build-deploy.sh ios production
+    description: Build Deploy iOS (Production)
+
+  build:android:staging:
+    run: bash scripts/build-deploy.sh aos staging
+    description: Build Deploy Android (Staging)
+
+  build:ios:staging:
+    run: bash scripts/build-deploy.sh ios staging
+    description: Build Deploy iOS (Staging)
+
+  build:android:development:
+    run: bash scripts/build-deploy.sh aos development
+    description: Build Deploy Android (Development)
+
+  build:ios:development:
+    run: bash scripts/build-deploy.sh ios development
+    description: Build Deploy iOS (Development)
+
+  build:android:qa:
+    run: bash scripts/build-deploy.sh aos qa
+    description: Build Deploy Android (QA)
+
+  build:ios:qa:
+    run: bash scripts/build-deploy.sh ios qa
+    description: Build Deploy iOS (QA)
+
+  convert:svg:
+    run: bash scripts/convert-svg-vec.sh -d assets/icon
+    description: Convert Svg to Vec
+
+  convert:svg:force:
+    run: bash scripts/convert-svg-vec.sh -d assets/icon -f true
+    description: Convert Svg to Vec (Reset)
+
+  signing:report:keystore:
+    run: bash scripts/signing-report-keystore.sh
+    description: Get Signing Report Keystore
+
+  hello_flutter:
+    exec: echo 'Hello $(dirname $PWD)'
+    packageFilters:
+      dirExists:
+        - test

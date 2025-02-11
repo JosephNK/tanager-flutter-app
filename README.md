@@ -1,4 +1,4 @@
-# tanager
+# tanager-flutter-app
 
 A new Flutter project.
 
