@@ -1,0 +1,9 @@
+# flutter_native_splash-qa.yaml
+flutter_native_splash:
+  color: "#ffffff"
+
+  android_12:
+    # image: assets/launcher_icon/launcher-icon-qa.png
+    icon_background_color: "#ffffff"
+
+  web: false
