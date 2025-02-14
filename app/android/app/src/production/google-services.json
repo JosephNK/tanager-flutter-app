@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "655045639484",
+    "project_id": "tanager-3cf2a",
+    "storage_bucket": "tanager-3cf2a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:655045639484:android:f76d9009858d738e3cf239",
+        "android_client_info": {
+          "package_name": "com.josephnk.tanager"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAabyI6KsWK7wFwg9iEcmtfFgicDRsbcuY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
